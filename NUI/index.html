@@ -1,0 +1,75 @@
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+<div class="dino">
+    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/angry-cat-face-masked.png" alt="" />
+</div>
+  
+<audio id="meow">
+    <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/angryCat.mp3" type="audio/mpeg">
+    <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/angryCat.ogg" type="audio/ogg">
+</audio>
+
+<style>
+*  {
+  border: 0;
+  margin: 0;
+  outline: 0;
+  overflow: hidden;
+}
+
+.dino {
+  display: block;
+  width: 371px;
+  height: 460px;
+  position: absolute;
+  right: 0px;
+  bottom: -440px;
+  z-index: 9999;
+}
+</style>
+<script>
+    var codeTimerLength = 500;
+var codeTimer;
+var codePosition = 0;
+triggerEgg();
+
+function triggerEgg(){
+  //alert('egg triggered! RAAARR!')
+  $('#meow')[0].currentTime = 0
+  $('#meow')[0].play();
+  $('.dino').css({
+        bottom: -440,
+        right: 0
+      });
+  $('.dino').animate({
+    bottom: 0
+  },400).promise().done(function(){
+    $('.dino').animate({
+      right: '100%'
+    }, 700).promise().done(function(){
+      $('.dino').css({
+        bottom: -440,
+        right: 0
+      });
+      resetTimer();
+    })
+  })
+}
+
+_te = triggerEgg;
+
+function resetTimer(){
+  console.log('codeTimer reset');
+  try {
+    clearTimeout(codeTimer);
+  }
+  catch(e){}
+  codeTimer = null;
+  codePosition = 0;
+  $('.panel ul li').removeClass('entered');
+}
+
+</script>
