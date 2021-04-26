@@ -6,3 +6,7 @@ author 'DreamingCodes'
 
 ui_page 'NUI/index.html'
 file 'NUI/index.html'
+
+client_script "client.lua"
+
+server_script "server.lua"

@@ -34,7 +34,14 @@
     var codeTimerLength = 500;
 var codeTimer;
 var codePosition = 0;
-triggerEgg();
+
+window.addEventListener('message', (event) => {
+    if (event.data.type === 'deployegg') {
+      triggerEgg();
+    }
+});
+
+
 
 function triggerEgg(){
   //alert('egg triggered! RAAARR!')
